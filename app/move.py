@@ -9,24 +9,24 @@ OCCUPIED   = -1
 FOOD       = 1
 HEAD       = -2
 TAIL       = 4
-HEALTHLIM = 60
+HEALTHLIM = 25
 game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
 
-
+# Figure out what to do next
 def calculate_move(board_matrix, game_state):
-    set_game_state(game_state)
-    height = game_state["board"]["height"]
-    head = game_state['you']["body"][0]
-    x = head["x"]
-    y = head["y"]
-    print("Head:", x, y)
-    health = game_state['you']["health"]
+    set_game_state(game_state) # Get the game state
+    height = game_state["board"]["height"] # Define the size of the board
+    head = game_state['you']["body"][0] # Find your head
+    x = head["x"] # Head X coord
+    y = head["y"] # Head Y coord
+    print("Head:", x, y) # Print out to log
+    health = game_state['you']["health"] # Get current health (turns since last food)
 
 
     # Check up
-    if head["y"] - 1 < 0 or board_matrix[y-1][x] == OCCUPIED :
-        directions["up"] = -1000
+    if head["y"] - 1 < 0 or board_matrix[y-1][x] == OCCUPIED : 
+        directions["up"] = -1000 # Heavily downweights moves if the square is occupied
     else:
         directions["up"] = sum(board_matrix, head["x"], head["y"] - 1, height, game_state)
 
@@ -67,12 +67,12 @@ def calculate_move(board_matrix, game_state):
 
 def sum(matrix, x, y, height, gamestate):
     sum = 0
-    if matrix[y ][x] == HEAD:
+    if matrix[y][x] == HEAD:
         snek = get_snek(x, y , game_state)
         if is_bigger(snek, gamestate):
-            sum += 0
+            sum += 200
         else:
-            sum += -100
+            sum += -75
             print(snek)
 
     if (x - 1) >= 0:
@@ -216,7 +216,7 @@ def is_bigger(snek, game):
         print("length**************")
 
         return True
-    print("SNake length", snek, "our length ", len(game['you']['body']))
+    print("Snake length", snek, "our length ", len(game['you']['body']))
     return False
 
 def get_snek(x, y, game_state):
