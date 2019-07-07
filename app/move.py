@@ -9,7 +9,7 @@ OCCUPIED   = -1
 FOOD       = 1
 HEAD       = -2
 TAIL       = 4
-HEALTHLIM = 25
+HEALTHLIM = 60
 game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
 
