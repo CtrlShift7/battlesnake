@@ -23,15 +23,19 @@ def calculate_move(board_matrix, game_state):
     print("Head:", x, y) # Print out to log
     health = game_state['you']["health"] # Get current health (turns since last food)
 
-    if game_state["turn"] < 5 :
-        if game_state["turn"] == 1 :
+    if game_state["turn"] < 4 :
+        if game_state["turn"] == 0 :
             directions["up"] = 500
-        elif game_state["turn"] == 2 :
+            print("TURN init: ", game_state["turn"])
+        elif game_state["turn"] == 1 :
             directions["right"] = 500
-        elif game_state["turn"] == 3 :
+            print("TURN init: ", game_state["turn"])
+        elif game_state["turn"] == 2 :
             directions["down"] = 500
-        elif game_state["turn"] == 4 :
+            print("TURN init: ", game_state["turn"])
+        elif game_state["turn"] == 3 :
             directions["left"] = 500
+            print("TURN init: ", game_state["turn"])
 	
     # Check up
     if head["y"] - 1 < 0 or board_matrix[y-1][x] == OCCUPIED : 
@@ -63,8 +67,6 @@ def calculate_move(board_matrix, game_state):
     if( health < HEALTHLIM and len(game_state['board']['food'])>0):
         find_food(game_state, board_matrix)
 
-
-
     print(max(directions, key=lambda k: directions[k]))
     quad(board_matrix, game_state)
     print("UP", directions["up"])
@@ -79,7 +81,7 @@ def sum(matrix, x, y, height, gamestate):
     if matrix[y][x] == HEAD:
         snek = get_snek(x, y , game_state)
         if is_bigger(snek, gamestate):
-            sum += 2000
+            sum += 1000
         else:
             sum += -100
             print(snek)
