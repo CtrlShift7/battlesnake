@@ -6,7 +6,7 @@ from pathfinding.finder.a_star import AStarFinder
 
 UNOCCUPIED = 1
 OCCUPIED   = -1
-FOOD       = 12
+FOOD       = 25
 HEAD       = -2
 TAIL       = 4
 HEALTHLIM = 30
@@ -83,7 +83,7 @@ def sum(matrix, x, y, height, gamestate):
         if is_bigger(snek, gamestate):
             sum += 1000
         else:
-            sum += -100
+            sum += -50
             print(snek)
 
     if (x - 1) >= 0:
@@ -93,7 +93,7 @@ def sum(matrix, x, y, height, gamestate):
             if is_bigger(snek, gamestate):
                 sum += 1000
             else:
-                sum += -100
+                sum += -50
                 print(snek)
 
     if (x + 1) < height:
@@ -103,7 +103,7 @@ def sum(matrix, x, y, height, gamestate):
             if(is_bigger(snek, gamestate)):
                 sum += 1000
             else:
-                sum += -100
+                sum += -50
                 print(snek)
 
     if (y - 1) >= 0:
@@ -113,7 +113,7 @@ def sum(matrix, x, y, height, gamestate):
             if is_bigger(snek, gamestate):
                 sum += 1000
             else:
-                sum += -100
+                sum += -50
                 print(snek)
 
     if (y + 1) < height:
