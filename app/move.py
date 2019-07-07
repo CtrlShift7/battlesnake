@@ -6,7 +6,7 @@ from pathfinding.finder.a_star import AStarFinder
 
 UNOCCUPIED = 1
 OCCUPIED   = -1
-FOOD       = 1
+FOOD       = 15
 HEAD       = -2
 TAIL       = 4
 HEALTHLIM = 25
@@ -70,9 +70,9 @@ def sum(matrix, x, y, height, gamestate):
     if matrix[y][x] == HEAD:
         snek = get_snek(x, y , game_state)
         if is_bigger(snek, gamestate):
-            sum += 200
+            sum += 2000
         else:
-            sum += -75
+            sum += -100
             print(snek)
 
     if (x - 1) >= 0:
@@ -80,9 +80,9 @@ def sum(matrix, x, y, height, gamestate):
         if matrix[y][x-1] == HEAD :
             snek = get_snek(x-1, y, game_state)
             if is_bigger(snek, gamestate):
-                sum += 200
+                sum += 2000
             else:
-                sum += -75
+                sum += -100
                 print(snek)
 
     if (x + 1) < height:
@@ -90,9 +90,9 @@ def sum(matrix, x, y, height, gamestate):
         if matrix[y][x+1] == HEAD :
             snek = get_snek(x+1, y, game_state)
             if(is_bigger(snek, gamestate)):
-                sum += 200
+                sum += 2000
             else:
-                sum += -75
+                sum += -100
                 print(snek)
 
     if (y - 1) >= 0:
@@ -100,9 +100,9 @@ def sum(matrix, x, y, height, gamestate):
         if matrix[y-1][x] == HEAD :
             snek = get_snek(x, y-1, game_state)
             if is_bigger(snek, gamestate):
-                sum += 200
+                sum += 2000
             else:
-                sum += -75
+                sum += -100
                 print(snek)
 
     if (y + 1) < height:
@@ -110,9 +110,9 @@ def sum(matrix, x, y, height, gamestate):
         if matrix[y+1][x] == HEAD :
             snek = get_snek(x, y+1, game_state)
             if is_bigger(snek, gamestate):
-                sum += 200
+                sum += 2000
             else:
-                sum += -75
+                sum += -100
                 print(snek)
 
     if (x-1) >= 0 and (y+1) < height:

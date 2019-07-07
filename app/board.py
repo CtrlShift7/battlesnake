@@ -2,7 +2,7 @@ import numpy as np
 
 UNOCCUPIED = 1
 OCCUPIED   = -1
-FOOD       = 1
+FOOD       = 15
 HEAD       = -2
 
 
