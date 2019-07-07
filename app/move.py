@@ -6,10 +6,10 @@ from pathfinding.finder.a_star import AStarFinder
 
 UNOCCUPIED = 1
 OCCUPIED   = -1
-FOOD       = 15
+FOOD       = 12
 HEAD       = -2
 TAIL       = 4
-HEALTHLIM = 25
+HEALTHLIM = 30
 game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
 
@@ -23,19 +23,19 @@ def calculate_move(board_matrix, game_state):
     print("Head:", x, y) # Print out to log
     health = game_state['you']["health"] # Get current health (turns since last food)
 
-    #if game_state["turn"] < 4 :
-        #if game_state["turn"] == 0 :
-            #directions["up"] = 500
-            #print("TURN init: ", game_state["turn"])
-        #elif game_state["turn"] == 1 :
-            #directions["right"] = 500
-            #print("TURN init: ", game_state["turn"])
-        #elif game_state["turn"] == 2 :
-            #directions["down"] = 500
-            #print("TURN init: ", game_state["turn"])
-        #elif game_state["turn"] == 3 :
-            #directions["left"] = 500
-            #print("TURN init: ", game_state["turn"])
+    if game_state["turn"] < 4 :
+        if game_state["turn"] == 0 :
+            directions["up"] = 500
+            print("TURN init: ", game_state["turn"])
+        elif game_state["turn"] == 1 :
+            directions["right"] = 500
+            print("TURN init: ", game_state["turn"])
+        elif game_state["turn"] == 2 :
+            directions["down"] = 500
+            print("TURN init: ", game_state["turn"])
+        elif game_state["turn"] == 3 :
+            directions["left"] = 500
+            print("TURN init: ", game_state["turn"])
 
     # Check up
     if head["y"] - 1 < 0 or board_matrix[y-1][x] == OCCUPIED : 
