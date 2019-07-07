@@ -201,21 +201,30 @@ def quad(matrix, game_state):
         for j in range(x):
             if(matrix[j][i]== UNOCCUPIED):
                 quad1 += 1
+            if(matrix[j][i]== FOOD):
+                quad1 += 1
 
     for i in range(y):
         for j in range(x, height):
             if(matrix[j][i]== UNOCCUPIED):
                 quad2 += 1
-
+            if(matrix[j][i]== FOOD):
+                quad2 += 1
+				
     for i in range(y, height):
         for j in range(x):
             if(matrix[j][i]== UNOCCUPIED):
+                quad3 += 1
+            if(matrix[j][i]== FOOD):
                 quad3 += 1
 
     for i in range(y, height):
         for j in range(x, height):
             if(matrix[j][i]== UNOCCUPIED):
                 quad4 += 1
+            if(matrix[j][i]== FOOD):
+                quad4 += 1
+
     directions['up'] += (quad1 + quad2)/height
     directions['down'] += (quad3 + quad4)/height
     directions['left'] += (quad1 + quad3)/height
