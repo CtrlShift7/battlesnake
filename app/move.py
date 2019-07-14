@@ -23,19 +23,19 @@ def calculate_move(board_matrix, game_state):
     print("Head:", x, y) # Print out to log
     health = game_state['you']["health"] # Get current health (turns since last food)
 
-    if game_state["turn"] < 4 :
-        if game_state["turn"] == 0 :
-            directions["up"] = 500
-            print("TURN init: ", game_state["turn"])
-        elif game_state["turn"] == 1 :
-            directions["right"] = 500
-            print("TURN init: ", game_state["turn"])
-        elif game_state["turn"] == 2 :
-            directions["down"] = 500
-            print("TURN init: ", game_state["turn"])
-        elif game_state["turn"] == 3 :
-            directions["left"] = 500
-            print("TURN init: ", game_state["turn"])
+    # if game_state["turn"] < 4 :
+        #if game_state["turn"] == 0 :
+            #directions["up"] = 500
+            #print("TURN init: ", game_state["turn"])
+        #elif game_state["turn"] == 1 :
+            #directions["right"] = 500
+            #print("TURN init: ", game_state["turn"])
+        #elif game_state["turn"] == 2 :
+            #directions["down"] = 500
+            #print("TURN init: ", game_state["turn"])
+        #elif game_state["turn"] == 3 :
+            #directions["left"] = 500
+            #print("TURN init: ", game_state["turn"])
 
     # Check up
     if head["y"] - 1 < 0 or board_matrix[y-1][x] == OCCUPIED : 
@@ -93,7 +93,7 @@ def sum(matrix, x, y, height, gamestate):
             if is_bigger(snek, gamestate):
                 sum += 1000
             else:
-                sum += -50
+                sum += -100
                 print(snek)
 
     if (x + 1) < height:
@@ -103,7 +103,7 @@ def sum(matrix, x, y, height, gamestate):
             if(is_bigger(snek, gamestate)):
                 sum += 1000
             else:
-                sum += -50
+                sum += -100
                 print(snek)
 
     if (y - 1) >= 0:
@@ -113,7 +113,7 @@ def sum(matrix, x, y, height, gamestate):
             if is_bigger(snek, gamestate):
                 sum += 1000
             else:
-                sum += -50
+                sum += -100
                 print(snek)
 
     if (y + 1) < height:
@@ -202,28 +202,28 @@ def quad(matrix, game_state):
             if(matrix[j][i]== UNOCCUPIED):
                 quad1 += 1
             if(matrix[j][i]== FOOD):
-                quad1 += 1
+                quad1 += 2
 
     for i in range(y):
         for j in range(x, height):
             if(matrix[j][i]== UNOCCUPIED):
                 quad2 += 1
             if(matrix[j][i]== FOOD):
-                quad2 += 1
+                quad2 += 2
 				
     for i in range(y, height):
         for j in range(x):
             if(matrix[j][i]== UNOCCUPIED):
                 quad3 += 1
             if(matrix[j][i]== FOOD):
-                quad3 += 1
+                quad3 += 2
 
     for i in range(y, height):
         for j in range(x, height):
             if(matrix[j][i]== UNOCCUPIED):
                 quad4 += 1
             if(matrix[j][i]== FOOD):
-                quad4 += 1
+                quad4 += 2
 
     directions['up'] += (quad1 + quad2)/height
     directions['down'] += (quad3 + quad4)/height
