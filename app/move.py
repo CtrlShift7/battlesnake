@@ -41,7 +41,7 @@ def calculate_move(board_matrix, game_state):
     if head["y"] - 1 < 0 or board_matrix[y-1][x] == OCCUPIED : 
         directions["up"] = -1000 # Heavily downweights moves if the square is occupied
     elif board_matrix[y-2][x]== OCCUPIED :
-        directions["right"] = -500
+        directions["up"] = -500
     else:
         directions["up"] = sum(board_matrix, head["x"], head["y"] - 1, height, game_state)
 
@@ -50,7 +50,7 @@ def calculate_move(board_matrix, game_state):
     if head["y"] + 1 > (height - 1) or board_matrix[y+1][x] == OCCUPIED :
         directions["down"] = -1000
     elif head["y"] + 1 > (height - 2) or board_matrix[y+2][x]== OCCUPIED :
-        directions["right"] = -500
+        directions["down"] = -500
     else:
         directions["down"] = sum(board_matrix, head["x"], head["y"] + 1, height, game_state)
 
@@ -59,7 +59,7 @@ def calculate_move(board_matrix, game_state):
     if head["x"] - 1 < 0 or board_matrix[y][x-1] == OCCUPIED :
         directions["left"] = -1000
     elif board_matrix[y][x-2]== OCCUPIED :
-        directions["right"] = -500
+        directions["left"] = -500
     else:
         directions["left"] = sum(board_matrix, head["x"] - 1, head["y"], height, game_state)
 
