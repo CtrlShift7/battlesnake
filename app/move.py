@@ -9,7 +9,7 @@ OCCUPIED   = -1
 FOOD       = 25
 HEAD       = -2
 TAIL       = 4
-HEALTHLIM = 30
+HEALTHLIM = 25
 game_state = ""
 directions = {'up': 0, 'down': 0, 'left': 0, 'right': 0}
 
@@ -210,28 +210,28 @@ def quad(matrix, game_state):
             if(matrix[j][i]== UNOCCUPIED):
                 quad1 += 1
             if(matrix[j][i]== FOOD):
-                quad1 += 2
+                quad1 += 5
 
     for i in range(y):
         for j in range(x, height):
             if(matrix[j][i]== UNOCCUPIED):
                 quad2 += 1
             if(matrix[j][i]== FOOD):
-                quad2 += 2
+                quad2 += 5
 				
     for i in range(y, height):
         for j in range(x):
             if(matrix[j][i]== UNOCCUPIED):
                 quad3 += 1
             if(matrix[j][i]== FOOD):
-                quad3 += 2
+                quad3 += 5
 
     for i in range(y, height):
         for j in range(x, height):
             if(matrix[j][i]== UNOCCUPIED):
                 quad4 += 1
             if(matrix[j][i]== FOOD):
-                quad4 += 2
+                quad4 += 5
 
     directions['up'] += (quad1 + quad2)/height
     directions['down'] += (quad3 + quad4)/height
