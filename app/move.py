@@ -7,7 +7,7 @@ from pathfinding.finder.a_star import AStarFinder
 UNOCCUPIED = 1
 OCCUPIED   = -1
 FOOD       = 25
-HEAD       = -2
+HEAD       = -5
 TAIL       = 4
 HEALTHLIM = 25
 game_state = ""
