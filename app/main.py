@@ -25,7 +25,7 @@ def ping():
 @bottle.post('/start')
 def start():
     game_state = bottle.request.json
-    snake_colour = "#f7c719"
+    snake_colour = "#02f5dd"
     return start_response(snake_colour)
 
 

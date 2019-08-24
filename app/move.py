@@ -71,6 +71,26 @@ def calculate_move(board_matrix, game_state):
         directions["right"] = -500
     else:
         directions["right"] = sum(board_matrix, head["x"] + 1, head["y"], height, game_state)
+	
+    # check up-right
+    if board_matrix[x+1][y+1] == OCCUPIED :
+        directions["up"] = -500
+        directions["right"] = -500
+
+    # check up-left
+    if board_matrix[x-1][y+1] == OCCUPIED :
+        directions["up"] = -500
+        directions["left"] = -500
+
+    # check down-left
+    if board_matrix[x-1][y-1] == OCCUPIED :
+       directions["down"] = -500
+       directions["left"] = -500
+	   
+    # check down-right
+    if board_matrix[x+1][y-1] == OCCUPIED :
+       directions["down"] = -500
+       directions["right"] = -500
 
     if( health < HEALTHLIM and len(game_state['board']['food'])>0):
         find_food(game_state, board_matrix)
