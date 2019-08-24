@@ -42,7 +42,7 @@ def calculate_move(board_matrix, game_state):
         directions["up"] = -1000 # Heavily downweights moves if the square is occupied
         print("UP OCCUPIED")
     elif board_matrix[y-2][x]== OCCUPIED :
-        directions["up"] = -500
+        directions["up"] = -2
         print("UP2 OCCUPIED")
     else:
         directions["up"] = sum(board_matrix, head["x"], head["y"] - 1, height, game_state)
@@ -53,7 +53,7 @@ def calculate_move(board_matrix, game_state):
         directions["down"] = -1000
         print("DN OCCUPIED")
     elif head["y"] + 1 > (height - 2) or board_matrix[y+2][x]== OCCUPIED :
-        directions["down"] = -500
+        directions["down"] = -2
         print("DN2 OCCUPIED")
     else:
         directions["down"] = sum(board_matrix, head["x"], head["y"] + 1, height, game_state)
@@ -64,7 +64,7 @@ def calculate_move(board_matrix, game_state):
         directions["left"] = -1000
         print("L OCCUPIED")
     elif board_matrix[y][x-2]== OCCUPIED :
-        directions["left"] = -500
+        directions["left"] = -2
         print("L2 OCCUPIED")
     else:
         directions["left"] = sum(board_matrix, head["x"] - 1, head["y"], height, game_state)
@@ -75,34 +75,50 @@ def calculate_move(board_matrix, game_state):
         directions["right"] = -1000
         print("R OCCUPIED")
     elif head["x"] + 1 > (height - 2) or board_matrix[y][x+2]== OCCUPIED :
-        directions["right"] = -500
+        directions["right"] = -2
         print("R2 OCCUPIED")
     else:
         directions["right"] = sum(board_matrix, head["x"] + 1, head["y"], height, game_state)
 	
     # check up-right
-    if board_matrix[x+1][y-1] == OCCUPIED or head["y"] - 1 < 0 or head["x"] + 1 > (height - 1) :
-        directions["up"] = -1
+    if board_matrix[y-1][x+1] == OCCUPIED and board_matrix[y-1][x] == OCCUPIED :
+        directions["up"] = -2
         directions["right"] = -1
-        print("U-R OCCUPIED")
+        print("U-r OCCUPIED")
+    elif board_matrix[y-1][x+1] == OCCUPIED and board_matrix[y][x+1]== OCCUPIED :
+        directions["up"] = -1
+        directions["right"] = -2
+        print("u-R OCCUPIED")
 
     # check up-left
-    if board_matrix[x-1][y-1] == OCCUPIED or head["y"] - 1 < 0 or head["x"] - 1 < 0 :
-        directions["up"] = -1
+    if board_matrix[y-1][x-1] == OCCUPIED and board_matrix[y-1][x] == OCCUPIED :
+        directions["up"] = -2
         directions["left"] = -1
-        print("U-L OCCUPIED")
+        print("U-l OCCUPIED")
+    elif board_matrix[y-1][x-1] == OCCUPIED and board_matrix[y][x-1] == OCCUPIED :
+        directions["up"] = -1
+        directions["left"] = -2
+        print("u-L OCCUPIED")
 
     # check down-left
-    if board_matrix[x-1][y+1] == OCCUPIED or head["y"] + 1 > (height - 1) or head["x"] - 1 < 0 :
-        directions["down"] = -1
+    if board_matrix[y+1][x-1] == OCCUPIED and board_matrix[y+1][x] == OCCUPIED :
+        directions["down"] = -2
         directions["left"] = -1
-        print("D-L OCCUPIED")
+        print("D-l OCCUPIED")
+    elif board_matrix[y+1][x-1] == OCCUPIED and board_matrix[y][x-1] == OCCUPIED :
+        directions["down"] = -1
+        directions["left"] = -2
+        print("d-L OCCUPIED")
 
     # check down-right
-    if board_matrix[x+1][y+1] == OCCUPIED or head["y"] + 1 > (height - 1) or head["x"] + 1 > (height - 1) :
-        directions["down"] = -1
+    if board_matrix[y+1][x+1] == OCCUPIED and board_matrix[y+1][x] == OCCUPIED :
+        directions["down"] = -2
         directions["right"] = -1
-        print("D-R OCCUPIED")
+        print("D-r OCCUPIED")
+    elif board_matrix[y+1][x+1] == OCCUPIED and board_matrix[y][x+1]== OCCUPIED :
+        directions["down"] = -1
+        directions["right"] = -2
+        print("d-R OCCUPIED")
 
     if( health < HEALTHLIM and len(game_state['board']['food'])>0):
         find_food(game_state, board_matrix)
@@ -123,7 +139,7 @@ def sum(matrix, x, y, height, gamestate):
         if is_bigger(snek, gamestate):
             sum += 1000
         else:
-            sum += -50
+            sum += -100
             print(snek)
 
     if (x - 1) >= 0:
