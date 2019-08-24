@@ -81,44 +81,44 @@ def calculate_move(board_matrix, game_state):
         directions["right"] = sum(board_matrix, head["x"] + 1, head["y"], height, game_state)
 	
     # check up-right
-    if board_matrix[y-1][x+1] == OCCUPIED and board_matrix[y-1][x] == OCCUPIED :
-        directions["up"] = -2
-        directions["right"] = -1
-        print("U-r OCCUPIED")
-    elif board_matrix[y-1][x+1] == OCCUPIED and board_matrix[y][x+1]== OCCUPIED :
-        directions["up"] = -1
-        directions["right"] = -2
-        print("u-R OCCUPIED")
+#    if board_matrix[y-1][x+1] == OCCUPIED and board_matrix[y-1][x] == OCCUPIED :
+#        directions["up"] = -2
+#        directions["right"] = -1
+#        print("U-r OCCUPIED")
+#    elif board_matrix[y-1][x+1] == OCCUPIED and board_matrix[y][x+1]== OCCUPIED :
+#        directions["up"] = -1
+#        directions["right"] = -2
+#        print("u-R OCCUPIED")
 
     # check up-left
-    if board_matrix[y-1][x-1] == OCCUPIED and board_matrix[y-1][x] == OCCUPIED :
-        directions["up"] = -2
-        directions["left"] = -1
-        print("U-l OCCUPIED")
-    elif board_matrix[y-1][x-1] == OCCUPIED and board_matrix[y][x-1] == OCCUPIED :
-        directions["up"] = -1
-        directions["left"] = -2
-        print("u-L OCCUPIED")
+#    if board_matrix[y-1][x-1] == OCCUPIED and board_matrix[y-1][x] == OCCUPIED :
+#        directions["up"] = -2
+#        directions["left"] = -1
+#        print("U-l OCCUPIED")
+#    elif board_matrix[y-1][x-1] == OCCUPIED and board_matrix[y][x-1] == OCCUPIED :
+#        directions["up"] = -1
+#        directions["left"] = -2
+#        print("u-L OCCUPIED")
 
     # check down-left
-    if board_matrix[y+1][x-1] == OCCUPIED and board_matrix[y+1][x] == OCCUPIED :
-        directions["down"] = -2
-        directions["left"] = -1
-        print("D-l OCCUPIED")
-    elif board_matrix[y+1][x-1] == OCCUPIED and board_matrix[y][x-1] == OCCUPIED :
-        directions["down"] = -1
-        directions["left"] = -2
-        print("d-L OCCUPIED")
+#    if board_matrix[y+1][x-1] == OCCUPIED and board_matrix[y+1][x] == OCCUPIED :
+#        directions["down"] = -2
+#        directions["left"] = -1
+#        print("D-l OCCUPIED")
+#    elif board_matrix[y+1][x-1] == OCCUPIED and board_matrix[y][x-1] == OCCUPIED :
+#        directions["down"] = -1
+#        directions["left"] = -2
+#        print("d-L OCCUPIED")
 
     # check down-right
-    if board_matrix[y+1][x+1] == OCCUPIED and board_matrix[y+1][x] == OCCUPIED :
-        directions["down"] = -2
-        directions["right"] = -1
-        print("D-r OCCUPIED")
-    elif board_matrix[y+1][x+1] == OCCUPIED and board_matrix[y][x+1]== OCCUPIED :
-        directions["down"] = -1
-        directions["right"] = -2
-        print("d-R OCCUPIED")
+#    if board_matrix[y+1][x+1] == OCCUPIED and board_matrix[y+1][x] == OCCUPIED :
+#        directions["down"] = -2
+#        directions["right"] = -1
+#        print("D-r OCCUPIED")
+#    elif board_matrix[y+1][x+1] == OCCUPIED and board_matrix[y][x+1]== OCCUPIED :
+#        directions["down"] = -1
+#        directions["right"] = -2
+#        print("d-R OCCUPIED")
 
     if( health < HEALTHLIM and len(game_state['board']['food'])>0):
         find_food(game_state, board_matrix)
