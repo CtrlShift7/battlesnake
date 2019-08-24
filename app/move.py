@@ -74,23 +74,23 @@ def calculate_move(board_matrix, game_state):
 	
     # check up-right
     if board_matrix[x+1][y+1] == OCCUPIED :
-        directions["up"] = -100
-        directions["right"] = -100
+        directions["up"] = -10
+        directions["right"] = -10
 
     # check up-left
     if board_matrix[x-1][y+1] == OCCUPIED :
-        directions["up"] = -100
-        directions["left"] = -100
+        directions["up"] = -10
+        directions["left"] = -10
 
     # check down-left
     if board_matrix[x-1][y-1] == OCCUPIED :
-       directions["down"] = -100
-       directions["left"] = -100
+       directions["down"] = -10
+       directions["left"] = -10
 	   
     # check down-right
     if board_matrix[x+1][y-1] == OCCUPIED :
-       directions["down"] = -100
-       directions["right"] = -100
+       directions["down"] = -10
+       directions["right"] = -10
 
     if( health < HEALTHLIM and len(game_state['board']['food'])>0):
         find_food(game_state, board_matrix)
